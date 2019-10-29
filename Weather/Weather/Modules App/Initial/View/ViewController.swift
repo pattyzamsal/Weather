@@ -41,7 +41,7 @@ class ViewController: BaseVC {
     
     private func findElement(icon: String) -> Int {
         var indexStruct = 0
-        for i in 0..<listDataToShow.count - 1 {
+        for i in 0..<listDataToShow.count {
             if listDataToShow[i].icon == icon {
                 indexStruct = i
                 break
@@ -51,9 +51,32 @@ class ViewController: BaseVC {
     }
     
     @IBAction func onFindClick(_ sender: Any) {
+        endEditing()
+        if !listDataToShow.isEmpty {
+            listDataToShow.removeAll()
+        }
+        guard let textInput = tfCityCoordinate.text,
+            !textInput.isEmpty else {
+                let alert = createAlertView(title: TextsApps.important.rawValue, message: TextsApps.emptyValue.rawValue)
+                self.present(alert, animated: true, completion: nil)
+            return
+        }
         showProgress()
-        presenter.getWeatherByName(cityName: "Bogotá")
-//        presenter.getWeatherByCoordinates(lat: 35, lon: 139)
+        if textInput.contains("(") && textInput.contains(",") && textInput.contains(")") && textInput.first == "(" {
+            let newText = textInput.replacingOccurrences(of: "(", with: "").replacingOccurrences(of: ")", with: "")
+            let splitText = newText.split(separator: ",")
+            let lat = Int(splitText[0]) ?? 0
+            let lon = Int(splitText[1]) ?? 0
+            presenter.getWeatherByCoordinates(lat: lat, lon: lon)
+        } else {
+            if textInput.contains("(") && textInput.first == "(" && (!textInput.contains(",") || !textInput.contains(")")) {
+                hideProgress()
+                let alert = createAlertView(title: TextsApps.important.rawValue, message: TextsApps.invalidFormat.rawValue)
+                self.present(alert, animated: true, completion: nil)
+            } else {
+                presenter.getWeatherByName(cityName: textInput)
+            }
+        }
     }
 }
 
