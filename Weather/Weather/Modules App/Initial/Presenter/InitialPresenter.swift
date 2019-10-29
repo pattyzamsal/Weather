@@ -10,8 +10,10 @@ import Foundation
 
 protocol InitialViewProtocol: BaseViewProtocol {
     func onSuccessImageData(imageData: Data)
+    func onSuccessWeather(weathers: [WeatherDecodable])
 }
 
 protocol InitialModelProtocol: BaseModelProtocol {
     func onSuccessImageData(imageData: Data)
+    func onSuccessWeather(weathers: [WeatherDecodable])
 }

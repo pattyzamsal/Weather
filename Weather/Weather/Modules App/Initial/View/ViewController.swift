@@ -25,7 +25,7 @@ class ViewController: BaseVC {
         setupView()
         
         showProgress()
-        presenter.getImage()
+        presenter.getImage(icon: "02d")
     }
     
     
@@ -35,7 +35,9 @@ class ViewController: BaseVC {
     }
     
     @IBAction func onFindClick(_ sender: Any) {
-        
+        showProgress()
+        presenter.getWeatherByName(cityName: "Bogotá")
+        presenter.getWeatherByCoordinates(lat: 35, lon: 139)
     }
 }
 
@@ -43,5 +45,10 @@ extension ViewController: InitialViewProtocol {
     func onSuccessImageData(imageData: Data) {
         hideProgress()
         imgLogo.image = UIImage(data: imageData, scale:1)
+    }
+    
+    func onSuccessWeather(weathers: [WeatherDecodable]) {
+        hideProgress()
+        print("icon: \(weathers[0].icon)")
     }
 }
