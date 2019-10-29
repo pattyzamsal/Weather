@@ -31,6 +31,7 @@
 		7EB692B02367DB7600F6BFD1 /* WeatherDecodable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EB692AF2367DB7600F6BFD1 /* WeatherDecodable.swift */; };
 		7EB692B42367DE5E00F6BFD1 /* WeatherCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EB692B22367DE5E00F6BFD1 /* WeatherCell.swift */; };
 		7EB692B52367DE5E00F6BFD1 /* WeatherCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7EB692B32367DE5E00F6BFD1 /* WeatherCell.xib */; };
+		7EB692B92368005E00F6BFD1 /* WeatherCellStruct.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EB692B82368005E00F6BFD1 /* WeatherCellStruct.swift */; };
 		8F52C86BB68F46AB10606B32 /* Pods_Weather.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 07B461D7DED1A553AE4CD16E /* Pods_Weather.framework */; };
 /* End PBXBuildFile section */
 
@@ -64,6 +65,7 @@
 		7EB692AF2367DB7600F6BFD1 /* WeatherDecodable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherDecodable.swift; sourceTree = "<group>"; };
 		7EB692B22367DE5E00F6BFD1 /* WeatherCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherCell.swift; sourceTree = "<group>"; };
 		7EB692B32367DE5E00F6BFD1 /* WeatherCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WeatherCell.xib; sourceTree = "<group>"; };
+		7EB692B82368005E00F6BFD1 /* WeatherCellStruct.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherCellStruct.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -107,6 +109,7 @@
 		7EB692492367B91200F6BFD1 /* Weather */ = {
 			isa = PBXGroup;
 			children = (
+				7EB692B62368002C00F6BFD1 /* Utils */,
 				7EB692962367C70600F6BFD1 /* UI */,
 				7EB692832367C1B600F6BFD1 /* API */,
 				7EB692602367BDCB00F6BFD1 /* Modules App */,
@@ -264,6 +267,22 @@
 			path = Cell;
 			sourceTree = "<group>";
 		};
+		7EB692B62368002C00F6BFD1 /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				7EB692B72368004200F6BFD1 /* Structs */,
+			);
+			path = Utils;
+			sourceTree = "<group>";
+		};
+		7EB692B72368004200F6BFD1 /* Structs */ = {
+			isa = PBXGroup;
+			children = (
+				7EB692B82368005E00F6BFD1 /* WeatherCellStruct.swift */,
+			);
+			path = Structs;
+			sourceTree = "<group>";
+		};
 		CA8C94DEC2E54EFC5528FC01 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -399,6 +418,7 @@
 				7EB692AA2367D09500F6BFD1 /* InitialModel.swift in Sources */,
 				7EB692872367C29900F6BFD1 /* TextsApp.swift in Sources */,
 				7EB692992367C72A00F6BFD1 /* UIViewController+Extension.swift in Sources */,
+				7EB692B92368005E00F6BFD1 /* WeatherCellStruct.swift in Sources */,
 				7EB692A52367CC8000F6BFD1 /* BaseVC.swift in Sources */,
 				7EB6929E2367C89800F6BFD1 /* ProgressViewDelegate.swift in Sources */,
 				7EB692AC2367D0CA00F6BFD1 /* InitialPresenter.swift in Sources */,
