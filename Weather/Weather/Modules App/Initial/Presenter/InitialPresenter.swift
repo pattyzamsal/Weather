@@ -9,11 +9,11 @@
 import Foundation
 
 protocol InitialViewProtocol: BaseViewProtocol {
-    func onSuccessImageData(imageData: Data)
+    func onSuccessImageData(imageData: Data, icon: String)
     func onSuccessWeather(weathers: [WeatherDecodable])
 }
 
 protocol InitialModelProtocol: BaseModelProtocol {
-    func onSuccessImageData(imageData: Data)
+    func onSuccessImageData(imageData: Data, icon: String)
     func onSuccessWeather(weathers: [WeatherDecodable])
 }

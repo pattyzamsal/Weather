@@ -20,7 +20,7 @@ class InitialModel: BaseModel {
         if APIClient.validateConnectInternet() {
             APIClient.downloadPhoto(icon: icon) { (imageData) in
                 if let imgData = imageData {
-                    self.onSuccessImageData(imageData: imgData)
+                    self.onSuccessImageData(imageData: imgData, icon: icon)
                 } else {
                     self.sendMessage(title: TextsApps.errorWithDownloadTitle.rawValue, message: TextsApps.errorWithDownloadMessage.rawValue)
                 }
@@ -60,8 +60,8 @@ class InitialModel: BaseModel {
 }
 
 extension InitialModel: InitialModelProtocol {
-    func onSuccessImageData(imageData: Data) {
-        self.view.onSuccessImageData(imageData: imageData)
+    func onSuccessImageData(imageData: Data, icon: String) {
+        self.view.onSuccessImageData(imageData: imageData, icon: icon)
     }
     
     func onSuccessWeather(weathers: [WeatherDecodable]) {

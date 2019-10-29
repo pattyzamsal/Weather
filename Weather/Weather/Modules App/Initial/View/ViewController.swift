@@ -11,14 +11,14 @@ import UIKit
 class ViewController: BaseVC {
     
     @IBOutlet weak var contentView: UIView!
-     @IBOutlet weak var lblDescription: UILabel!
+    @IBOutlet weak var lblDescription: UILabel!
     @IBOutlet weak var tfCityCoordinate: UITextField!
     @IBOutlet weak var btnFind: UIButton!
     @IBOutlet weak var tvData: UITableView!
     
     private lazy var presenter = InitialModel(view: self)
     private var listOfWeathers = [WeatherDecodable]()
-    private var dataToShow = [(imgData: Data, description: String)]() {
+    private var listDataToShow = [WeatherCellStruct]() {
         didSet {
             tvData.reloadData()
         }
@@ -35,8 +35,19 @@ class ViewController: BaseVC {
         btnFind.setTitle(TextsApps.find.rawValue, for: .normal)
         tvData.delegate = self
         tvData.dataSource = self
-        let nib = UINib(nibName: "WeatherCell", bundle: nil)
-        tvData.register(nib, forCellReuseIdentifier: "WeatherCell")
+        let nib = UINib(nibName: TextsApps.weatherCell.rawValue, bundle: nil)
+        tvData.register(nib, forCellReuseIdentifier: TextsApps.weatherCell.rawValue)
+    }
+    
+    private func findElement(icon: String) -> Int {
+        var indexStruct = 0
+        for i in 0..<listDataToShow.count - 1 {
+            if listDataToShow[i].icon == icon {
+                indexStruct = i
+                break
+            }
+        }
+        return indexStruct
     }
     
     @IBAction func onFindClick(_ sender: Any) {
@@ -47,18 +58,19 @@ class ViewController: BaseVC {
 }
 
 extension ViewController: InitialViewProtocol {
-    func onSuccessImageData(imageData: Data) {
-        hideProgress()
-//        dataToShow[indexWeather].imgData = imageData
-//        tvData.reloadData()
+    func onSuccessImageData(imageData: Data, icon: String) {
+        let indexIcon = findElement(icon: icon)
+        if indexIcon == listDataToShow.count - 1 {
+            hideProgress()
+        }
+        listDataToShow[indexIcon].setImage(data: imageData)
     }
     
     func onSuccessWeather(weathers: [WeatherDecodable]) {
-        hideProgress()
-        for weather in weathers {
-            let newWeather = (imgData: Data(), description: weather.description)
-            dataToShow.append(newWeather)
-//            presenter.getImage(icon: weather.icon)
+        for i in 0..<weathers.count {
+            let newStruct = WeatherCellStruct(id: weathers[i].id, description: weathers[i].description, icon: weathers[i].icon)
+            listDataToShow.append(newStruct)
+            presenter.getImage(icon: weathers[i].icon)
         }
     }
 }
@@ -66,18 +78,19 @@ extension ViewController: InitialViewProtocol {
 extension ViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return dataToShow.count
+        return listDataToShow.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tvData.dequeueReusableCell(withIdentifier: TextsApps.weatherCell.rawValue) as! WeatherCell
         
-        if !dataToShow.isEmpty {
-            if !dataToShow[indexPath.row].imgData.isEmpty {
-                cell.setupImg(imgData: dataToShow[indexPath.row].imgData)
+        if !listDataToShow.isEmpty {
+            if !listDataToShow[indexPath.row].description.isEmpty {
+                cell.setupDescription(description: listDataToShow[indexPath.row].description)
             }
-            if !dataToShow[indexPath.row].description.isEmpty {
-                cell.setupDescription(description: dataToShow[indexPath.row].description)
+            if let image = listDataToShow[indexPath.row].image,
+                !image.isEmpty {
+                cell.setupImg(imgData: image)
             }
         }
         
