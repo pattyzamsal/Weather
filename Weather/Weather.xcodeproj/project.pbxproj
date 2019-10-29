@@ -13,6 +13,7 @@
 		7EB692522367B91200F6BFD1 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7EB692502367B91200F6BFD1 /* Main.storyboard */; };
 		7EB692542367B91300F6BFD1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7EB692532367B91300F6BFD1 /* Assets.xcassets */; };
 		7EB692572367B91300F6BFD1 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7EB692552367B91300F6BFD1 /* LaunchScreen.storyboard */; };
+		7EB6925F2367B9A500F6BFD1 /* Config.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = 7EB6925E2367B9A500F6BFD1 /* Config.xcconfig */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +25,7 @@
 		7EB692532367B91300F6BFD1 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		7EB692562367B91300F6BFD1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		7EB692582367B91300F6BFD1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		7EB6925E2367B9A500F6BFD1 /* Config.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Config.xcconfig; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -63,6 +65,7 @@
 				7EB692532367B91300F6BFD1 /* Assets.xcassets */,
 				7EB692552367B91300F6BFD1 /* LaunchScreen.storyboard */,
 				7EB692582367B91300F6BFD1 /* Info.plist */,
+				7EB6925E2367B9A500F6BFD1 /* Config.xcconfig */,
 			);
 			path = Weather;
 			sourceTree = "<group>";
@@ -125,6 +128,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7EB6925F2367B9A500F6BFD1 /* Config.xcconfig in Resources */,
 				7EB692572367B91300F6BFD1 /* LaunchScreen.storyboard in Resources */,
 				7EB692542367B91300F6BFD1 /* Assets.xcassets in Resources */,
 				7EB692522367B91200F6BFD1 /* Main.storyboard in Resources */,
@@ -168,6 +172,7 @@
 /* Begin XCBuildConfiguration section */
 		7EB692592367B91300F6BFD1 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 7EB6925E2367B9A500F6BFD1 /* Config.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_ANALYZER_NONNULL = YES;
@@ -228,6 +233,7 @@
 		};
 		7EB6925A2367B91300F6BFD1 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 7EB6925E2367B9A500F6BFD1 /* Config.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_ANALYZER_NONNULL = YES;
