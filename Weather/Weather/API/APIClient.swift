@@ -9,10 +9,15 @@
 import Foundation
 import Alamofire
 
-func returnUrl(path: String) -> URL {
+func returnUrl() -> URL {
     
     let baseUrl = Bundle.main.infoDictionary?[TextsApps.baseURL.rawValue] as! String
     return try! baseUrl.asURL()
+}
+
+func getApiKey() -> String {
+    
+    return Bundle.main.infoDictionary?[TextsApps.apiKey.rawValue] as! String
 }
 
 class APIClient {
