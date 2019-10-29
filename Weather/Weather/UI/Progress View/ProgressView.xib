@@ -35,9 +35,6 @@
                 <constraint firstItem="CaX-cv-Hol" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" multiplier="1.1" id="TQK-ek-gbs"/>
                 <constraint firstItem="gnR-Lk-F9R" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" multiplier="0.9" id="fJM-xZ-6l9"/>
             </constraints>
-            <connections>
-                <outlet property="lblLoading" destination="CaX-cv-Hol" id="odE-sf-IG2"/>
-            </connections>
             <point key="canvasLocation" x="138" y="133"/>
         </view>
     </objects>

@@ -12,7 +12,7 @@ class ProgressView: UIView {
     
     @IBOutlet weak var contentView: UIView!
     @IBOutlet weak var lblLoading: UILabel!
-
+    
     fileprivate let deviceSize = UIScreen.main.bounds.size
     fileprivate var delegate: ProgressViewDelegate!
     
