@@ -20,6 +20,9 @@ enum TextsApps: String {
     case cancel = "Cancel"
     case accept = "Accept"
     case loading = "loading"
+    case important = "Important"
+    case emptyValue = "Please, write a name of the city or write a coordinate (x, y)"
+    case error = "Error"
     
     //MARK: Initial view
     case description = "Introduce a city or coordinate in this format (x, y) to see the weather"
