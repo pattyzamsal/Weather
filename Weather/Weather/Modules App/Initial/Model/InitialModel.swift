@@ -34,10 +34,9 @@ class InitialModel: BaseModel {
         if APIClient.validateConnectInternet() {
             APIClient.getWeatherByCity(cityName: cityName) { (response) in
                 if let res = response {
-                    if let weathers = res.weathers {
+                    if let weathers = res.weather {
                         self.onSuccessWeather(weathers: weathers)
-                    }
-                    if let cod = res.cod,
+                    } else if let cod = res.cod,
                         let message = res.message,
                         cod == "404" {
                         self.sendMessage(title: TextsApps.error.rawValue, message: message.capitalized)
@@ -55,10 +54,9 @@ class InitialModel: BaseModel {
         if APIClient.validateConnectInternet() {
             APIClient.getWeatherByCoordinates(lat: lat, lon: lon) { (response) in
                 if let res = response {
-                    if let weathers = res.weathers {
+                    if let weathers = res.weather {
                         self.onSuccessWeather(weathers: weathers)
-                    }
-                    if let cod = res.cod,
+                    } else if let cod = res.cod,
                         let message = res.message,
                         cod == "404" {
                         self.sendMessage(title: TextsApps.error.rawValue, message: message.capitalized)
