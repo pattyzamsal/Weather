@@ -13,8 +13,11 @@ class WeatherCell: UITableViewCell {
     @IBOutlet weak var imgIcon: UIImageView!
     @IBOutlet weak var lblDescription: UILabel!
     
-    func setupData(imgData: Data, description: String) {
+    func setupDescription(description: String) {
         lblDescription.text = description
+    }
+    
+    func setupImg(imgData: Data) {
         imgIcon.image = UIImage(data: imgData, scale: 1)
     }
 }
