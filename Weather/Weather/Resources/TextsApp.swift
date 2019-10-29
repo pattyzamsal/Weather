@@ -33,4 +33,5 @@ enum TextsApps: String {
     
     //MARK: objects in the app
     case progressView = "ProgressView"
+    case weatherCell = "WeatherCell"
 }
