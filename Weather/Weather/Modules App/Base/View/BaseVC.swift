@@ -21,6 +21,10 @@ class BaseVC: UIViewController {
         super.viewDidLoad()
     }
     
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        self.view.endEditing(true)
+    }
+    
     //MARK: manage progress view
     func showProgress() {
         if self.progressView == nil {
