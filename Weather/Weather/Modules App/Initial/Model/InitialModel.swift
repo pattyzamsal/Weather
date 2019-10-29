@@ -20,7 +20,7 @@ class InitialModel: BaseModel {
         if APIClient.validateConnectInternet() {
             APIClient.downloadPhoto(icon: icon) { (imageData) in
                 if let imgData = imageData {
-                    self.onSuccessImageData(imageData: imgData)
+                    self.onSuccessImageData(imageData: imgData, icon: icon)
                 } else {
                     self.sendMessage(title: TextsApps.errorWithDownloadTitle.rawValue, message: TextsApps.errorWithDownloadMessage.rawValue)
                 }
@@ -32,9 +32,15 @@ class InitialModel: BaseModel {
     
     func getWeatherByName(cityName: String) {
         if APIClient.validateConnectInternet() {
-            APIClient.getWeatherByCity(cityName: cityName) { (weathers) in
-                if let weathersArray = weathers {
-                    self.onSuccessWeather(weathers: weathersArray)
+            APIClient.getWeatherByCity(cityName: cityName) { (response) in
+                if let res = response {
+                    if let weathers = res.weather {
+                        self.onSuccessWeather(weathers: weathers)
+                    } else if let cod = res.cod,
+                        let message = res.message,
+                        cod == "404" {
+                        self.sendMessage(title: TextsApps.error.rawValue, message: message.capitalized)
+                    }
                 } else {
                     self.sendMessage(title: TextsApps.withoutInternetTitle.rawValue, message: TextsApps.withoutInternetMessage.rawValue)
                 }
@@ -46,9 +52,15 @@ class InitialModel: BaseModel {
     
     func getWeatherByCoordinates(lat: Int, lon: Int) {
         if APIClient.validateConnectInternet() {
-            APIClient.getWeatherByCoordinates(lat: lat, lon: lon) { (weathers) in
-                if let weathersArray = weathers {
-                    self.onSuccessWeather(weathers: weathersArray)
+            APIClient.getWeatherByCoordinates(lat: lat, lon: lon) { (response) in
+                if let res = response {
+                    if let weathers = res.weather {
+                        self.onSuccessWeather(weathers: weathers)
+                    } else if let cod = res.cod,
+                        let message = res.message,
+                        cod == "404" {
+                        self.sendMessage(title: TextsApps.error.rawValue, message: message.capitalized)
+                    }
                 } else {
                     self.sendMessage(title: TextsApps.withoutInternetTitle.rawValue, message: TextsApps.withoutInternetMessage.rawValue)
                 }
@@ -60,8 +72,8 @@ class InitialModel: BaseModel {
 }
 
 extension InitialModel: InitialModelProtocol {
-    func onSuccessImageData(imageData: Data) {
-        self.view.onSuccessImageData(imageData: imageData)
+    func onSuccessImageData(imageData: Data, icon: String) {
+        self.view.onSuccessImageData(imageData: imageData, icon: icon)
     }
     
     func onSuccessWeather(weathers: [WeatherDecodable]) {

@@ -14,7 +14,7 @@ extension UIViewController {
     
     func createAlertView(title: String,
                          message: String,
-                         hasCancelButton: Bool,
+                         hasCancelButton: Bool = false,
                          handlerAccept: ((UIAlertAction) -> Void)? = nil,
                          handlerCancel: ((UIAlertAction) -> Void)? = nil) -> UIAlertController {
         let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)

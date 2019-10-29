@@ -43,7 +43,7 @@ class APIClient {
         }
     }
     
-    static func getWeatherByCity(cityName: String, completion: @escaping ([WeatherDecodable]?)->Void) {
+    static func getWeatherByCity(cityName: String, completion: @escaping (ResponseDecodable?)->Void) {
         AF.request(APIRouter.getWeatherByCityName(cityName: cityName) as URLRequestConvertible)
             .logRequest()
             .responseJSON { (response) in
@@ -54,7 +54,7 @@ class APIClient {
                             print("Success JSON: \(json)")
                             do {
                                 let response = try JSONDecoder().decode(ResponseDecodable.self, from: data)
-                                completion(response.weather)
+                                completion(response)
                             } catch {
                                 print("Error with Decodable: \(error)")
                                 completion(nil)
@@ -67,7 +67,7 @@ class APIClient {
             }
     }
     
-    static func getWeatherByCoordinates(lat: Int, lon: Int, completion: @escaping ([WeatherDecodable]?)->Void) {
+    static func getWeatherByCoordinates(lat: Int, lon: Int, completion: @escaping (ResponseDecodable?)->Void) {
         AF.request(APIRouter.getWeatherByCoordinates(lat: lat, lon: lon) as URLRequestConvertible)
             .logRequest()
             .responseJSON { (response) in
@@ -78,7 +78,7 @@ class APIClient {
                             print("Success JSON: \(json)")
                             do {
                                 let response = try JSONDecoder().decode(ResponseDecodable.self, from: data)
-                                completion(response.weather)
+                                completion(response)
                             } catch {
                                 print("Error with Decodable: \(error)")
                                 completion(nil)
