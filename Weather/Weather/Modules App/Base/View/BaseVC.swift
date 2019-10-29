@@ -22,6 +22,10 @@ class BaseVC: UIViewController {
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        endEditing()
+    }
+    
+    func endEditing() {
         self.view.endEditing(true)
     }
     
