@@ -20,6 +20,16 @@ enum TextsApps: String {
     case accept = "Accept"
     case loading = "loading"
     
+    //MARK: Initial view
+    case description = "Introduce a city or coordinate in this format (x, y) to see the weather"
+    case find = "Search"
+    
+    //MARK: errors
+    case withoutInternetTitle = "Without connection"
+    case withoutInternetMessage = "Please, review your connection to internet"
+    case errorWithDownloadTitle = "Something wrong happened"
+    case errorWithDownloadMessage = "Your request cann't be processed, try again"
+    
     //MARK: objects in the app
     case progressView = "ProgressView"
 }
