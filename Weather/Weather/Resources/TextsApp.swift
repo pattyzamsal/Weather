@@ -18,4 +18,8 @@ enum TextsApps: String {
     //MARK: alerts
     case cancel = "Cancel"
     case accept = "Accept"
+    case loading = "loading"
+    
+    //MARK: objects in the app
+    case progressView = "ProgressView"
 }
