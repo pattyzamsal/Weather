@@ -13,6 +13,7 @@ enum TextsApps: String {
     //MARK: constants
     case baseURL = "Base Url"
     case imageURL = "Image Url"
+    case apiKey = "Api Key"
     case png = ".png"
     
     //MARK: alerts
