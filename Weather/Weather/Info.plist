@@ -58,11 +58,11 @@
 		<string>UIInterfaceOrientationLandscapeLeft</string>
 		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
-	<key>Api key</key>
+	<key>Api Key</key>
 	<string>$(API_KEY)</string>
-	<key>Base url</key>
+	<key>Base Url</key>
 	<string>$(BASE_URL)</string>
-	<key>Image url</key>
+	<key>Image Url</key>
 	<string>$(IMAGE_URL)</string>
 </dict>
 </plist>
